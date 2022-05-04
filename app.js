@@ -2,6 +2,21 @@ const inquirer = require('inquirer');
 
 const promptUser = () => {
 
+const fs = require('fs');
+
+const generatePage = require('./src/page-template');
+
+//const pageHTML = generatePage(name, github);
+
+//const [name, github] = profileDataArgs;
+
+
+//fs.writeFile('index.html',pageHTML, err => {
+    //if(err) throw err;
+
+   // console.log('Portfolio complete! Checkout index.html to see the output');
+//});
+
     return inquirer.prompt([
         {
             type: 'input',
@@ -134,7 +149,13 @@ const promptProject = portfolioData => {
 promptUser()
     .then(promptProject)
     .then(portfolioData => {
-        console.log(portfolioData);
+         const pageHTML = generatePage(portfolioData);
+
+        //fs.writeFile('./index.html',pageHTML, err => {
+            //if (err) throw new Error(err);
+
+            //console.log('Page Created! Check out index.html in this directory to see it!');
+       // })
     });
 
 //const fs = require('fs');
